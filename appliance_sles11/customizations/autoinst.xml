@@ -1,0 +1,679 @@
+<?xml version="1.0"?>
+<!DOCTYPE profile>
+<profile xmlns="http://www.suse.com/1.0/yast2ns" xmlns:config="http://www.suse.com/1.0/configns">
+  <add-on>
+    <add_on_products config:type="list"/>
+  </add-on>
+  <bootloader>
+    <device_map config:type="list">
+      <device_map_entry>
+        <firmware>fd0</firmware>
+        <linux>/dev/fd0</linux>
+      </device_map_entry>
+      <device_map_entry>
+        <firmware>hd0</firmware>
+        <linux>/dev/sda</linux>
+      </device_map_entry>
+    </device_map>
+    <global>
+      <activate>true</activate>
+      <default>SUSE Linux Enterprise Server 11 SP1 - 2.6.32.12-0.7</default>
+      <generic_mbr>true</generic_mbr>
+      <gfxmenu>(hd0,6)/boot/message</gfxmenu>
+      <lines_cache_id>4</lines_cache_id>
+      <timeout config:type="integer">8</timeout>
+    </global>
+    <initrd_modules config:type="list">
+      <initrd_module>
+        <module>thermal</module>
+      </initrd_module>
+      <initrd_module>
+        <module>mptsas</module>
+      </initrd_module>
+      <initrd_module>
+        <module>ata_piix</module>
+      </initrd_module>
+      <initrd_module>
+        <module>ata_generic</module>
+      </initrd_module>
+      <initrd_module>
+        <module>ide_pci_generic</module>
+      </initrd_module>
+      <initrd_module>
+        <module>processor</module>
+      </initrd_module>
+      <initrd_module>
+        <module>fan</module>
+      </initrd_module>
+      <initrd_module>
+        <module>jbd</module>
+      </initrd_module>
+      <initrd_module>
+        <module>ext3</module>
+      </initrd_module>
+      <initrd_module>
+        <module>edd</module>
+      </initrd_module>
+    </initrd_modules>
+    <loader_type>grub</loader_type>
+    <sections config:type="list">
+      <section>
+        <append>resume=/dev/sda2 splash=silent crashkernel=256M-:128M showopts</append>
+        <image>(hd0,6)/boot/vmlinuz-2.6.32.12-0.7-default</image>
+        <initial>1</initial>
+        <initrd>(hd0,6)/boot/initrd-2.6.32.12-0.7-default</initrd>
+        <lines_cache_id>0</lines_cache_id>
+        <name>SUSE Linux Enterprise Server 11 SP1 - 2.6.32.12-0.7</name>
+        <original_name>linux</original_name>
+        <root>/dev/sda1</root>
+        <type>image</type>
+        <vgamode>0x314</vgamode>
+      </section>
+      <section>
+        <append>showopts ide=nodma apm=off noresume edd=off powersaved=off nohz=off highres=off processor.max_cstate=1 nomodeset x11failsafe</append>
+        <image>(hd0,6)/boot/vmlinuz-2.6.32.12-0.7-default</image>
+        <initrd>(hd0,6)/boot/initrd-2.6.32.12-0.7-default</initrd>
+        <lines_cache_id>1</lines_cache_id>
+        <name>Failsafe -- SUSE Linux Enterprise Server 11 SP1 - 2.6.32.12-0.7</name>
+        <original_name>failsafe</original_name>
+        <root>/dev/sda1</root>
+        <type>image</type>
+        <vgamode>0x314</vgamode>
+      </section>
+      <section>
+        <blockoffset>1</blockoffset>
+        <chainloader>/dev/sda1</chainloader>
+        <lines_cache_id>2</lines_cache_id>
+        <name>SUSE Linux Enterprise Server 10 SP3 - 2.6.16.60-0.83.2-smp (/dev/sda1)</name>
+        <noverifyroot>true</noverifyroot>
+        <original_name> SUSE Linux Enterprise Server 10 SP3 - 2.6.16.60-0.83.2-smp (/dev/sda1)</original_name>
+        <root></root>
+        <type>other</type>
+      </section>
+      <section>
+        <blockoffset>1</blockoffset>
+        <chainloader>/dev/fd0</chainloader>
+        <lines_cache_id>3</lines_cache_id>
+        <name>Floppy</name>
+        <noverifyroot>true</noverifyroot>
+        <original_name>floppy</original_name>
+        <root></root>
+        <type>other</type>
+      </section>
+    </sections>
+  </bootloader>
+  <ca_mgm>
+    <CAName>YaST_Default_CA</CAName>
+    <ca_commonName>YaST Default CA (site)</ca_commonName>
+    <country>US</country>
+    <locality></locality>
+    <organisation></organisation>
+    <organisationUnit></organisationUnit>
+    <password>ENTER PASSWORD HERE</password>
+    <server_email>postmaster@site</server_email>
+    <state></state>
+    <takeLocalServerName config:type="boolean">true</takeLocalServerName>
+  </ca_mgm>
+  <deploy_image>
+    <image_installation config:type="boolean">false</image_installation>
+  </deploy_image>
+  <security>
+     <console_shutdown>ignore</console_shutdown>
+     <permission_security>secure</permission_security>
+  </security>
+  <general>
+    <ask-list config:type="list"/>
+    <mode>
+      <halt config:type="boolean">false</halt>
+      <forceboot config:type="boolean">false</forceboot>
+      <final_reboot config:type="boolean">true</final_reboot>
+      <final_halt config:type="boolean">false</final_halt>
+      <confirm config:type="boolean">true</confirm>
+      <second_stage config:type="boolean">true</second_stage>
+    </mode>
+    <mouse>
+      <id>none</id>
+    </mouse>
+    <proposals config:type="list"/>
+    <signature-handling>
+      <accept_file_without_checksum config:type="boolean">true</accept_file_without_checksum>
+      <accept_non_trusted_gpg_key config:type="boolean">true</accept_non_trusted_gpg_key>
+      <accept_unknown_gpg_key config:type="boolean">true</accept_unknown_gpg_key>
+      <accept_unsigned_file config:type="boolean">true</accept_unsigned_file>
+      <accept_verification_failed config:type="boolean">false</accept_verification_failed>
+      <import_gpg_key config:type="boolean">true</import_gpg_key>
+    </signature-handling>
+  </general>
+  <groups config:type="list">
+    <group>
+      <group_password>x</group_password>
+      <groupname>users</groupname>
+      <userlist></userlist>
+    </group>
+  </groups>
+  <host>
+    <hosts config:type="list">
+      <hosts_entry>
+        <host_address>127.0.0.1</host_address>
+        <names config:type="list">
+          <name>localhost</name>
+        </names>
+      </hosts_entry>
+      <hosts_entry>
+        <host_address>127.0.0.2</host_address>
+        <names config:type="list">
+          <name>linux-crye.site linux-crye</name>
+        </names>
+      </hosts_entry>
+      <hosts_entry>
+        <host_address>::1</host_address>
+        <names config:type="list">
+          <name>localhost ipv6-localhost ipv6-loopback</name>
+        </names>
+      </hosts_entry>
+      <hosts_entry>
+        <host_address>fe00::0</host_address>
+        <names config:type="list">
+          <name>ipv6-localnet</name>
+        </names>
+      </hosts_entry>
+      <hosts_entry>
+        <host_address>ff00::0</host_address>
+        <names config:type="list">
+          <name>ipv6-mcastprefix</name>
+        </names>
+      </hosts_entry>
+      <hosts_entry>
+        <host_address>ff02::1</host_address>
+        <names config:type="list">
+          <name>ipv6-allnodes</name>
+        </names>
+      </hosts_entry>
+      <hosts_entry>
+        <host_address>ff02::2</host_address>
+        <names config:type="list">
+          <name>ipv6-allrouters</name>
+        </names>
+      </hosts_entry>
+      <hosts_entry>
+        <host_address>ff02::3</host_address>
+        <names config:type="list">
+          <name>ipv6-allhosts</name>
+        </names>
+      </hosts_entry>
+    </hosts>
+  </host>
+  <iscsi-client>
+    <initiatorname></initiatorname>
+    <targets config:type="list"/>
+    <version>1.0</version>
+  </iscsi-client>
+  <kdump>
+    <add_crash_kernel config:type="boolean">true</add_crash_kernel>
+    <crash_kernel>256M-:128M</crash_kernel>
+    <general>
+      <KDUMPTOOL_FLAGS></KDUMPTOOL_FLAGS>
+      <KDUMP_COMMANDLINE></KDUMP_COMMANDLINE>
+      <KDUMP_COMMANDLINE_APPEND></KDUMP_COMMANDLINE_APPEND>
+      <KDUMP_CONTINUE_ON_ERROR>false</KDUMP_CONTINUE_ON_ERROR>
+      <KDUMP_COPY_KERNEL>yes</KDUMP_COPY_KERNEL>
+      <KDUMP_DUMPFORMAT>compressed</KDUMP_DUMPFORMAT>
+      <KDUMP_DUMPLEVEL>0</KDUMP_DUMPLEVEL>
+      <KDUMP_FREE_DISK_SIZE>64</KDUMP_FREE_DISK_SIZE>
+      <KDUMP_IMMEDIATE_REBOOT>yes</KDUMP_IMMEDIATE_REBOOT>
+      <KDUMP_KEEP_OLD_DUMPS>5</KDUMP_KEEP_OLD_DUMPS>
+      <KDUMP_KERNELVER></KDUMP_KERNELVER>
+      <KDUMP_NETCONFIG>auto</KDUMP_NETCONFIG>
+      <KDUMP_NOTIFICATION_CC></KDUMP_NOTIFICATION_CC>
+      <KDUMP_NOTIFICATION_TO></KDUMP_NOTIFICATION_TO>
+      <KDUMP_POSTSCRIPT></KDUMP_POSTSCRIPT>
+      <KDUMP_PRESCRIPT></KDUMP_PRESCRIPT>
+      <KDUMP_REQUIRED_PROGRAMS></KDUMP_REQUIRED_PROGRAMS>
+      <KDUMP_SAVEDIR>file:///var/crash</KDUMP_SAVEDIR>
+      <KDUMP_SMTP_PASSWORD></KDUMP_SMTP_PASSWORD>
+      <KDUMP_SMTP_SERVER></KDUMP_SMTP_SERVER>
+      <KDUMP_SMTP_USER></KDUMP_SMTP_USER>
+      <KDUMP_TRANSFER></KDUMP_TRANSFER>
+      <KDUMP_VERBOSE>3</KDUMP_VERBOSE>
+      <KEXEC_OPTIONS></KEXEC_OPTIONS>
+    </general>
+  </kdump>
+  <keyboard>
+    <keymap>english-us</keymap>
+  </keyboard>
+  <language>
+    <language>en_US</language>
+    <languages></languages>
+  </language>
+  <ldap>
+    <base_config_dn></base_config_dn>
+    <bind_dn></bind_dn>
+    <create_ldap config:type="boolean">false</create_ldap>
+    <file_server config:type="boolean">false</file_server>
+    <ldap_domain>dc=example,dc=com</ldap_domain>
+    <ldap_server>127.0.0.1</ldap_server>
+    <ldap_tls config:type="boolean">true</ldap_tls>
+    <ldap_v2 config:type="boolean">false</ldap_v2>
+    <login_enabled config:type="boolean">true</login_enabled>
+    <member_attribute>member</member_attribute>
+    <pam_password>exop</pam_password>
+    <start_autofs config:type="boolean">false</start_autofs>
+    <start_ldap config:type="boolean">false</start_ldap>
+  </ldap>
+  <login_settings/>
+  <networking>
+    <dhcp_options>
+      <dhclient_hostname_option>AUTO</dhclient_hostname_option>
+    </dhcp_options>
+    <dns>
+      <dhcp_hostname config:type="boolean">false</dhcp_hostname>
+      <dhcp_resolv config:type="boolean">true</dhcp_resolv>
+      <hostname></hostname>
+      <searchlist config:type="list">
+        <search></search>
+      </searchlist>
+    </dns>
+    <interfaces config:type="list">
+      <interface>
+        <bootproto>static</bootproto>
+        <device>eth0</device>
+        <ipaddr></ipaddr>
+        <netmask>255.255.255.0</netmask>
+        <name>eth0</name>
+        <startmode>auto</startmode>
+        <usercontrol>no</usercontrol>
+      </interface>
+      <interface>
+        <bootproto>static</bootproto>
+        <device>eth1</device>
+        <ipaddr></ipaddr>
+        <netmask>255.255.255.0</netmask>
+        <name>eth1</name>
+        <startmode>auto</startmode>
+        <usercontrol>no</usercontrol>
+      </interface>
+    </interfaces>
+    <managed config:type="boolean">false</managed>
+    <routing>
+      <ip_forward config:type="boolean">false</ip_forward>
+    </routing>
+  </networking>
+  <partitioning config:type="list">
+    <drive>
+      <device>/dev/sda</device>
+      <partitions config:type="list">
+        <partition>
+          <create config:type="boolean">true</create>
+          <filesystem config:type="symbol">ext3</filesystem>
+          <format config:type="boolean">true</format>
+          <mount>/</mount>
+          <mountby config:type="symbol">device</mountby>
+          <partition_id config:type="integer">131</partition_id>
+          <partition_nr config:type="integer">1</partition_nr>
+          <partition_type>primary</partition_type>
+          <size>8587160064</size>
+        </partition>
+        <partition>
+          <create config:type="boolean">true</create>
+          <filesystem config:type="symbol">swap</filesystem>
+          <format config:type="boolean">true</format>
+          <mount>swap</mount>
+          <mountby config:type="symbol">device</mountby>
+          <partition_id config:type="integer">130</partition_id>
+          <partition_nr config:type="integer">2</partition_nr>
+          <partition_type>primary</partition_type>
+          <size>4293595648</size>
+        </partition>
+        <partition>
+          <create config:type="boolean">true</create>
+          <filesystem config:type="symbol">ext3</filesystem>
+          <format config:type="boolean">true</format>
+          <mount>/tmp</mount>
+          <mountby config:type="symbol">device</mountby>
+          <partition_id config:type="integer">131</partition_id>
+          <partition_nr config:type="integer">5</partition_nr>
+          <size>4293563904</size>
+        </partition>
+        <partition>
+          <create config:type="boolean">true</create>
+          <filesystem config:type="symbol">ext3</filesystem>
+          <format config:type="boolean">true</format>
+          <mount>/var</mount>
+          <mountby config:type="symbol">device</mountby>
+          <partition_id config:type="integer">131</partition_id>
+          <partition_nr config:type="integer">6</partition_nr>
+          <size>8587160064</size>
+        </partition>
+        <partition>
+          <create config:type="boolean">true</create>
+          <filesystem config:type="symbol">ext3</filesystem>
+          <format config:type="boolean">true</format>
+          <mount>/opt/quest</mount>
+          <mountby config:type="symbol">device</mountby>
+          <partition_id config:type="integer">131</partition_id>
+          <partition_nr config:type="integer">7</partition_nr>
+          <size>80525458944</size>
+        </partition>
+        <partition>
+          <create config:type="boolean">true</create>
+          <filesystem config:type="symbol">xfs</filesystem>
+          <format config:type="boolean">true</format>
+          <mount>/opt/quest/foglight</mount>
+          <mountby config:type="symbol">device</mountby>
+          <partition_id config:type="integer">131</partition_id>
+          <partition_nr config:type="integer">8</partition_nr>
+          <size>max</size>
+        </partition>
+      </partitions>
+      <pesize></pesize>
+      <type config:type="symbol">CT_DISK</type>
+      <use>all</use>
+    </drive>
+    <drive>
+      <device>/dev/sdb</device>
+      <initialize config:type="boolean">true</initialize>
+      <partitions config:type="list">
+        <partition>
+          <create config:type="boolean">true</create>
+          <crypt_fs config:type="boolean">false</crypt_fs>
+          <filesystem config:type="symbol">xfs</filesystem>
+          <format config:type="boolean">true</format>
+          <fstopt>defaults</fstopt>
+          <loop_fs config:type="boolean">false</loop_fs>
+          <mount>/opt/quest/archiver</mount>
+          <mountby config:type="symbol">id</mountby>
+          <partition_id config:type="integer">131</partition_id>
+          <partition_nr config:type="integer">1</partition_nr>
+          <raid_options/>
+          <resize config:type="boolean">false</resize>
+          <size>max</size>
+        </partition>
+      </partitions>
+      <pesize></pesize>
+      <type config:type="symbol">CT_DISK</type>
+      <use>all</use>
+    </drive>
+  </partitioning>
+  <printer>
+    <cups_remote_server/>
+    <server_settings/>
+  </printer>
+  <proxy>
+    <enabled config:type="boolean">false</enabled>
+    <ftp_proxy></ftp_proxy>
+    <http_proxy></http_proxy>
+    <https_proxy></https_proxy>
+    <no_proxy>localhost, 127.0.0.1</no_proxy>
+    <proxy_password></proxy_password>
+    <proxy_user></proxy_user>
+  </proxy>
+  <report>
+    <errors>
+      <log config:type="boolean">true</log>
+      <show config:type="boolean">true</show>
+      <timeout config:type="integer">0</timeout>
+    </errors>
+    <messages>
+      <log config:type="boolean">true</log>
+      <show config:type="boolean">true</show>
+      <timeout config:type="integer">0</timeout>
+    </messages>
+    <warnings>
+      <log config:type="boolean">true</log>
+      <show config:type="boolean">true</show>
+      <timeout config:type="integer">0</timeout>
+    </warnings>
+    <yesno_messages>
+      <log config:type="boolean">true</log>
+      <show config:type="boolean">true</show>
+      <timeout config:type="integer">0</timeout>
+    </yesno_messages>
+  </report>
+  <runlevel>
+    <default>3</default>
+  </runlevel>
+  <software>
+    <post-packages config:type="list">
+      <package>Bastille</package>
+      <package>quest-1EU-appliancemon</package>
+      <package>quest-1EU-appliancemon-appconfig-fenced</package>
+      <package>quest-1EU-archiver</package>
+      <package>quest-1EU-archiver-appconfig-dell-allinone</package>
+      <package>quest-1EU-dellopenmanage</package>
+      <package>quest-1EU-osconfig</package>
+      <package>quest-1EU-console</package>
+      <package>quest-1EU-sniffer</package>
+      <package>quest-1EU-sniffer-appconfig-dell-allinone</package>
+      <package>quest-1EU-locationdb</package>
+      <package>quest-1EU-relayer</package>
+      <package>quest-1EU-relayer-appconfig-dell-allinone</package>
+      <package>quest-foglight</package>
+      <package>quest-foglight-appconfig-dell-allinone</package>
+      <package>quest-1EU-cartridges-enduser</package>
+      <package>quest-1EU-cartridges-endusermodels</package>
+      <package>quest-1EU-cartridges-enduser-defaults-allinone</package>
+      <package>quest-1EU-mysql</package>
+      <package>quest-1EU-devel</package>
+    </post-packages>
+    <packages config:type="list">
+      <package>jpackage-utils</package>
+      <package>java-1_6_0-sun</package>
+      <package>java-1_6_0-sun-devel</package>
+      <package>perl-X500-DN</package>
+      <package>perl-Bootloader</package>
+      <package>perl-gettext</package>
+      <package>perl-Config-Crontab</package>
+      <package>perl-TimeDate</package>
+      <package>perl-File-Tail</package>
+      <package>glibc-32bit</package>
+      <package>ncurses-32bit</package>
+      <package>irqbalance</package>
+      <package>libstdc++33</package>
+      <package>tcl</package>
+      <package>yast2-trans-en_US</package>
+      <package>libart_lgpl</package>
+      <package>libxml2-python</package>
+      <package>perl-DBI</package>
+      <package>perl-DBD-SQLite</package>
+      <package>mpt-firmware</package>
+      <package>update-alternatives</package>
+      <package>fontconfig</package>
+      <package>pciutils-ids</package>
+      <package>perl-Net-Daemon</package>
+      <package>perl-TermReadKey</package>
+      <package>sensors</package>
+      <package>perl-Digest-SHA1</package>
+      <package>perl-URI</package>
+      <package>perl-XML-Writer</package>
+      <package>perl-libapparmor</package>
+      <package>rrdtool</package>
+      <package>perl-PlRPC</package>
+      <package>zypper</package>
+      <package>libreiserfs</package>
+      <package>perl-Compress-Zlib</package>
+      <package>perl-Parse-RecDescent</package>
+      <package>perl-XML-Parser</package>
+      <package>python</package>
+      <package>net-snmp</package>
+      <package>dialog</package>
+      <package>cifs-mount</package>
+      <package>keyutils</package>
+      <package>keyutils-libs</package>
+      <package>binutils</package>
+      <package>expect</package>
+      <package>bc</package>
+      <package>gettext</package>
+      <package>procmail</package>
+      <package>sysstat</package>
+      <package>syslog-ng</package>
+      <package>smbios-utils-bin</package>
+      <package>libsmbios2</package>
+      <package>ntp</package>
+    </packages>
+    <patterns config:type="list">
+      <pattern>Minimal</pattern>
+      <pattern>apparmor</pattern>
+      <pattern>1eubase</pattern>
+    </patterns>
+    <remove-packages config:type="list">
+      <package>compat-libstdc++</package>
+      <package>powerpc32</package>
+      <package>s390-32</package>
+      <package>s390-tools</package>
+      <package>salinfo</package>
+      <package>libpfm</package>
+      <package>pdisk</package>
+      <package>pfmon</package>
+    </remove-packages>
+  </software>
+  <timezone>
+    <hwclock>UTC</hwclock>
+    <timezone>America/Los_Angeles</timezone>
+  </timezone>
+  <user_defaults>
+    <expire></expire>
+    <group>100</group>
+    <groups>video,dialout</groups>
+    <home>/home</home>
+    <inactive>-1</inactive>
+    <shell>/bin/bash</shell>
+    <skel>/etc/skel</skel>
+  </user_defaults>
+  <users config:type="list">
+    <user>
+      <encrypted config:type="boolean">true</encrypted>
+      <fullname>root</fullname>
+      <gid>0</gid>
+      <home>/root</home>
+      <password_settings>
+        <expire></expire>
+        <flag></flag>
+        <inact></inact>
+        <max></max>
+        <min></min>
+        <warn></warn>
+      </password_settings>
+      <shell>/bin/bash</shell>
+      <uid>0</uid>
+      <user_password>$2a$05$mvfOM11nGazvsCFGHgNS0epGVDt5WJuNjyXuM0L5f6qYEM3nKff6G</user_password>
+      <username>root</username>
+    </user>
+  </users>
+  <scripts>
+    <chroot-scripts config:type="list">
+      <script>
+        <filename>cheject.sh</filename>
+        <interpreter>shell</interpreter>
+        <chrooted config:type="boolean">false</chrooted>
+        <source><![CDATA[
+#!/bin/sh
+echo "Running non-Chrooted appliance setup script"
+
+#for f in /dev/{hda,hdb,hdc,hdd,sr0,sr1,sr2,sr3}
+#do
+#        eject $f
+#done
+
+]]>
+        </source>
+      </script>
+     <script>
+        <filename>chroot.sh</filename>
+        <interpreter>shell</interpreter>
+        <chrooted config:type="boolean">falase</chrooted>
+        <source><![CDATA[
+#!/bin/sh
+echo "Running Chrooted appliance setup script"
+
+if [ -d /etc/skel ]; then
+  pushd /etc/skel
+  rm -fr .d* .e* .f* .i* .k* .m* .u* .x* Documents bin public_html
+  cat > .bash_logout << EMF
+
+TTY=\`tty\`
+
+case \${TTY} in
+   /dev/tty[1-6])
+      clear ;;
+esac
+
+EMF
+  popd
+fi
+]]>
+        </source>
+      </script>
+    </chroot-scripts>
+    <post-scripts config:type="list">
+      <script>
+        <filename>post.sh</filename>
+        <interpreter>shell</interpreter>
+        <source><![CDATA[
+
+#!/bin/bash
+clear
+
+# The following code should loop through for as many NICs that are installed
+NET_DIR=/etc/sysconfig/network
+
+NUM_ETHS=`ls -l $NET_DIR/ifcfg-eth* | wc -l`
+
+for (( c=0; c<=$NUM_ETHS; c++ ))
+do
+  TMP_ETH=`grep eth$c $NET_DIR/ifcfg-eth-id* -l`
+  if [ ! -z $TMP_ETH ] ; then
+    mv $TMP_ETH $NET_DIR/ifcfg-eth$c
+  fi
+done
+
+#clean up user defaults
+rm -fr /etc/skel/* /etc/skel/.* >&/dev/null
+
+sed -i 's/gfxmenu.*/hiddenmenu/' /boot/grub/menu.lst
+rm /boot/initrd
+rm /boot/vmlinuz
+
+#set swappiness to 0
+VM_SWAPPINESS=0
+if [ -f /etc/sysctl.conf ]; then
+  cat /etc/sysctl.conf | grep -Ev "vm.swappiness=*"  > /etc/sysctl.conf.tmp
+  cat >> /etc/sysctl.conf.tmp <<EMF
+vm.swappiness = $VM_SWAPPINESS
+EMF
+  cp /etc/sysctl.conf.tmp /etc/sysctl.conf 1>/dev/null 2>&1 && rm -f /etc/sysctl.conf.tmp 1>/dev/null 2>&1
+fi
+
+#Set the appliance role
+cat > /opt/quest/appliancerole.xml << EMF 
+<appliancerole>
+
+  <!-- one of the following roles must be defined -->
+  <role>Unified</role>
+   
+  <!-- list of installed components -->
+  <components>
+    <component>Archiver</component>
+    <component>Sniffer</component>
+    <component>Foglight</component>
+    <component>Relayer</component>
+  </components>
+
+</appliancerole>
+EMF
+
+/opt/quest/osconfig/openmanage/install.bat
+
+DATE=`date +%Y%m%d`
+CHANGELIST=
+VERSION=
+BUILDID="$DATE"_"$CHANGELIST"
+echo "$BUILDID" > /opt/quest/BUILDID
+echo "$VERSION" > /opt/quest/VERSION
+
+
+]]>
+        </source>
+      </script>
+    </post-scripts>
+  </scripts>
+</profile>
